@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PartyApp</string>
+    <string name="txt_architect">architect your app with</string>
+    <string name="txt_mvvm">MVVM</string>
+    <string name="txt_email">shandonjoe@gmail.com</string>
+    <string name="txt_logo">App Logo</string>
+    <string name="txt_password">password</string>
+    <string name="txt_forget_password">Forget Password?</string>
+    <string name="txt_no_account">Don\'t have an account? Sign Up Here</string>
+    <string name="txt_name">Jonathan Lawerh</string>
+    <string name="txt_confirm_password">confirm password</string>
+    <string name="txt_sign_in">Sign In</string>
 </resources>
