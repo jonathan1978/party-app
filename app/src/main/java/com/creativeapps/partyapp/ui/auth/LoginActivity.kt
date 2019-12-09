@@ -3,22 +3,20 @@ package com.creativeapps.partyapp.ui.auth
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.creativeapps.partyapp.R
+import com.creativeapps.partyapp.data.db.entities.User
 import com.creativeapps.partyapp.databinding.ActivityLoginBinding
 import com.creativeapps.partyapp.util.hide
 import com.creativeapps.partyapp.util.show
 import com.creativeapps.partyapp.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
-import okhttp3.Response
 
 class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding : ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
         viewModel.authListener = this
@@ -28,11 +26,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         progress_bar.show()
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
+    override fun onSuccess(user: User) {
             progress_bar.hide()
-            toast(it)
-        })
+            toast("${user.name} is Logged in")
     }
 
     override fun onFailure(message: String) {

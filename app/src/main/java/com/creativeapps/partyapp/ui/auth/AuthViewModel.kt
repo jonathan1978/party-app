@@ -3,6 +3,7 @@ package com.creativeapps.partyapp.ui.auth
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.creativeapps.partyapp.data.repositories.UserRepository
+import com.creativeapps.partyapp.util.Coroutines
 
 class AuthViewModel : ViewModel() {
     var email: String? = null
@@ -16,7 +17,13 @@ class AuthViewModel : ViewModel() {
             authListener?.onFailure("Invalid Email or Password")
             return
         }
-        val loginResponse = UserRepository().userLogin(email!!, password!!)
-        authListener?.onSuccess(loginResponse)
+        Coroutines.main {
+            val response = UserRepository().userLogin(email!!, password!!)
+            if (response.isSuccessful){
+                authListener?.onSuccess(response.body()?.user!!)
+            }else{
+                authListener?.onFailure("Error Code: ${response.code()}")
+            }
+        }
     }
 }
