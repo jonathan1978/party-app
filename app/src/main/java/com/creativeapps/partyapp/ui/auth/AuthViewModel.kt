@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.creativeapps.partyapp.data.repositories.UserRepository
 import com.creativeapps.partyapp.util.ApiException
 import com.creativeapps.partyapp.util.Coroutines
+import com.creativeapps.partyapp.util.NoInternetException
 
 class AuthViewModel(
         private val repository: UserRepository
@@ -32,6 +33,8 @@ class AuthViewModel(
                 }
                 authListener?.onFailure(authResponse.message!!)
             }catch (e: ApiException){
+                authListener?.onFailure(e.message!!)
+            }catch (e: NoInternetException){
                 authListener?.onFailure(e.message!!)
             }
 

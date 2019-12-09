@@ -10,6 +10,7 @@ import com.creativeapps.partyapp.R
 import com.creativeapps.partyapp.data.db.AppDatabase
 import com.creativeapps.partyapp.data.db.entities.User
 import com.creativeapps.partyapp.data.network.MyApi
+import com.creativeapps.partyapp.data.network.NetworkConnectionInterceptor
 import com.creativeapps.partyapp.data.repositories.UserRepository
 import com.creativeapps.partyapp.databinding.ActivityLoginBinding
 import com.creativeapps.partyapp.ui.home.HomeActivity
@@ -23,7 +24,8 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val api = MyApi()
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = MyApi(networkConnectionInterceptor)
         val db = AppDatabase(this)
         val repository = UserRepository(api, db)
         val factory = AuthViewModelFactory(repository)
