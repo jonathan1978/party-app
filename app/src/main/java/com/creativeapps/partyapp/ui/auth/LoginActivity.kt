@@ -9,6 +9,7 @@ import com.creativeapps.partyapp.data.db.entities.User
 import com.creativeapps.partyapp.databinding.ActivityLoginBinding
 import com.creativeapps.partyapp.util.hide
 import com.creativeapps.partyapp.util.show
+import com.creativeapps.partyapp.util.snackbar
 import com.creativeapps.partyapp.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -28,11 +29,11 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess(user: User) {
             progress_bar.hide()
-            toast("${user.name} is Logged in")
+            root_layout.snackbar("${user.name} is Logged in")
     }
 
     override fun onFailure(message: String) {
         progress_bar.hide()
-        toast(message)
+        root_layout.snackbar(message)
     }
 }
