@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.creativeapps.partyapp.ui.home.profile.ProfileFragment"
-        android:label="profile_fragment"
+        android:label="profile"
         tools:layout="@layout/profile_fragment"/>
 
 </navigation>
