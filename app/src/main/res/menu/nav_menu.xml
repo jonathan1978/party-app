@@ -3,9 +3,9 @@
 
     <item
         android:title="@string/home"
-        android:id="@+id/fragmentHome"/>
+        android:id="@+id/profileFragment"/>
 
     <item
-        android:title="@string/users"
-        android:id="@+id/fragmentUsers"/>
+        android:title="@string/events"
+        android:id="@+id/eventsFragment"/>
 </menu>

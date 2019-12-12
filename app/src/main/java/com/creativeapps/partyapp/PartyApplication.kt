@@ -4,8 +4,10 @@ import android.app.Application
 import com.creativeapps.partyapp.data.db.AppDatabase
 import com.creativeapps.partyapp.data.network.MyApi
 import com.creativeapps.partyapp.data.network.NetworkConnectionInterceptor
+import com.creativeapps.partyapp.data.repositories.EventsRepository
 import com.creativeapps.partyapp.data.repositories.UserRepository
 import com.creativeapps.partyapp.ui.auth.AuthViewModelFactory
+import com.creativeapps.partyapp.ui.home.events.EventsViewModelFactory
 import com.creativeapps.partyapp.ui.home.profile.ProfileViewModel
 import com.creativeapps.partyapp.ui.home.profile.ProfileViewModelFactory
 import org.kodein.di.Kodein
@@ -24,7 +26,9 @@ class PartyApplication : Application(), KodeinAware {
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { AppDatabase(instance()) }
         bind() from singleton { UserRepository(instance(), instance()) }
+        bind() from singleton { EventsRepository(instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
+        bind() from provider { EventsViewModelFactory(instance()) }
     }
 }

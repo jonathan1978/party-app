@@ -10,4 +10,10 @@
         android:label="profile"
         tools:layout="@layout/profile_fragment"/>
 
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.creativeapps.partyapp.ui.home.events.EventsFragment"
+        android:label="@string/events"
+        tools:layout="@layout/events_fragment"/>
+
 </navigation>
