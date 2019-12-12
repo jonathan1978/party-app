@@ -28,8 +28,8 @@ class EventsRepository(
         }
     }
 
-    suspend fun getEvents(): LiveData<List<Event>>{
-        return withContext(Dispatchers.IO){
+    suspend fun getEvents(): LiveData<List<Event>> {
+        return withContext(Dispatchers.IO) {
             fetchEvents()
             db.getEventDao().getEvents()
         }
@@ -38,8 +38,12 @@ class EventsRepository(
     private suspend fun fetchEvents() {
         val lastSavedAt = prefs.getLastSavedAt()
         if (lastSavedAt == null || isFetchNeeded(LocalDateTime.parse(lastSavedAt))) {
-            val response = apiRequest { api.getEvents() }
-            events.postValue(response.events)
+            try {
+                val response = apiRequest { api.getEvents() }
+                events.postValue(response.events)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
