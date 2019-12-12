@@ -13,21 +13,24 @@ class NetworkConnectionInterceptor(
     private val applicationContext = context.applicationContext
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        if (!isIternetAvailable())
+        if (!isInternetAvailable())
             throw NoInternetException("Make sure you have an active data connection")
         return chain.proceed(chain.request())
     }
 
-    private fun isIternetAvailable() : Boolean{
-        val connectivityManager = applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork
-            val capabilities = connectivityManager.getNetworkCapabilities(network)
-            return capabilities != null && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
-        } else {
-            connectivityManager.activeNetworkInfo.also {
-                return it != null && it.isConnected
+    private fun isInternetAvailable(): Boolean {
+        var result = false
+        val connectivityManager =
+                applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        connectivityManager?.let {
+            it.getNetworkCapabilities(connectivityManager.activeNetwork)?.apply {
+                result = when {
+                    hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    else -> false
+                }
             }
         }
+        return result
     }
 }
