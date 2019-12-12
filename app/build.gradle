@@ -13,7 +13,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.creativeapps.partyapp"
-        minSdkVersion 15
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -73,4 +73,8 @@ dependencies {
     //Android Navigation Architecture
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.0-rc03"
     implementation "androidx.navigation:navigation-ui-ktx:2.2.0-rc03"
+
+    implementation 'com.xwray:groupie:2.3.0'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.3.0'
+    implementation 'com.xwray:groupie-databinding:2.3.0'
 }

@@ -26,7 +26,7 @@ class PartyApplication : Application(), KodeinAware {
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { AppDatabase(instance()) }
         bind() from singleton { UserRepository(instance(), instance()) }
-        bind() from singleton { EventsRepository(instance(), instance()) }
+        bind() from singleton { EventsRepository(instance(), instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
         bind() from provider { EventsViewModelFactory(instance()) }
