@@ -1,6 +1,8 @@
 package com.creativeapps.partyapp.ui.home.events
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +23,7 @@ import org.kodein.di.android.x.kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 
-class EventsFragment : Fragment(), KodeinAware {
+class EventsFragment() : Fragment(), KodeinAware {
 
     override val kodein by kodein()
 
@@ -43,7 +45,7 @@ class EventsFragment : Fragment(), KodeinAware {
 
     private fun bindUI() = Coroutines.main {
         progress_bar.show()
-        viewModel.events.await().observe(this, Observer {
+        viewModel.events.await().observe(viewLifecycleOwner, Observer {
             progress_bar.hide()
             initRecyclerView(it.toEventItem())
         })
@@ -67,4 +69,5 @@ class EventsFragment : Fragment(), KodeinAware {
             EventItem(it)
         }
     }
+
 }
