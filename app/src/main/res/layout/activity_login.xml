@@ -15,7 +15,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
-        android:background="#E2E2E2"
+        android:background="@drawable/gradient"
         android:layout_height="match_parent"
         tools:context=".ui.auth.LoginActivity">
 
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" app:fontFamily="cursive"
-                android:textColor="#465A61"/>
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_gravity="center_horizontal"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 app:fontFamily="casual" android:textStyle="bold" android:textAllCaps="false"
-                android:typeface="monospace" android:textColor="#969EEE"/>
+                android:typeface="monospace" android:textColor="#ffff"/>
 
         </LinearLayout>
 
@@ -97,7 +97,7 @@
                 android:importantForAutofill="no" />
 
             <TextView
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#000000"
                 android:layout_marginBottom="12dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="@string/txt_forget_password"
@@ -116,7 +116,7 @@
 
         <TextView
             android:layout_marginTop="12dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#000000"
             android:layout_centerHorizontal="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_below="@id/linearLayout2"
