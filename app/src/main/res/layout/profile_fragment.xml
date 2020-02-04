@@ -32,7 +32,7 @@
 
             <TextView
                 android:layout_gravity="center_horizontal"
-                tools:text="Belal Khan"
+                tools:text="Jonathan Lawerh"
                 android:text="@{viewmodel.user.name}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_gravity="center_horizontal"
-                tools:text="probelalkhan@gmail.com"
+                tools:text="lawerhjonathan@gmail.com"
                 android:text="@{viewmodel.user.email}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
