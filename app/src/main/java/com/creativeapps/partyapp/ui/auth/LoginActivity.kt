@@ -2,6 +2,8 @@ package com.creativeapps.partyapp.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -52,5 +54,12 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
     override fun onFailure(message: String) {
         progress_bar.hide()
         root_layout.snackbar(message)
+    }
+
+    fun signup(view: View) {
+        view.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
